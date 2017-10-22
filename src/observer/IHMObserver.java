@@ -13,7 +13,7 @@ public class IHMObserver extends IHM implements Observer {
 	}
 
 	@Override
-	public void notifyMe() {
+	public void notifyIhm() {
 		Buffer b = (Buffer) subject;
 		textArea.refresh(b.getTexte(), b.getSelectionDebut(), b.getSelectionLongueur());
 	}

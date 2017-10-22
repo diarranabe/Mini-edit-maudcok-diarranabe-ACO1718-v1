@@ -126,18 +126,18 @@ public class Buffer extends Subject {
 	public void notifyObservers() {
 		for (Iterator<Observer> it = observers.iterator(); it.hasNext();) {
 			Observer o = it.next();
-			o.notifyMe();
+			o.notifyIhm();
 		}
 	}
 
 	@Override
-	public void registerObserver(Observer o) {
+	public void addObserver(Observer o) {
 		observers.add(o);
 
 	}
 
 	@Override
-	public void unregisterObserver(Observer o) {
+	public void removeObserver(Observer o) {
 		observers.remove(o);
 	}
 

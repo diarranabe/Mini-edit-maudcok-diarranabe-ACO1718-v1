@@ -29,7 +29,7 @@ public class Client {
 		ihm.setCommands(commmands);
 
 		// mise en place de l'observer
-		buffer.registerObserver(ihm);
+		buffer.addObserver(ihm);
 
 		// finalisation de l'ihm
 		ihm.addTextArea(ZONE_TEXTE_ROWS, ZONE_TEXTE_COLS);

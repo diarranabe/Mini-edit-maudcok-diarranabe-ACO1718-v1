@@ -1,6 +1,3 @@
-/**
- * @(#) TextArea.java
- */
 
 package invoker;
 
