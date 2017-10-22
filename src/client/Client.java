@@ -2,7 +2,7 @@
 package client;
 
 import java.util.HashMap;
-import observer.IHMObserver;
+import observer.IhmObserver;
 import receiver.Buffer;
 import command.*;
 
@@ -11,13 +11,13 @@ public class Client {
 	private static final int ZONE_TEXTE_COLS = 70;
 
 	private static Buffer buffer;
-	private static IHMObserver ihm;
+	private static IhmObserver ihm;
 	private static HashMap<String, Command> commmands;
 
 	public static void main(String[] args) throws Exception {
 
 		buffer = new Buffer();
-		ihm = new IHMObserver(buffer);
+		ihm = new IhmObserver(buffer);
 
 		commmands = new HashMap<String, Command>();
 		commmands.put("couper", new Couper(buffer));

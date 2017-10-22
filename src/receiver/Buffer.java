@@ -7,41 +7,38 @@ import java.util.Iterator;
 import observer.Observer;
 import observer.Subject;
 
-/**
- * Gère les modifications du texte et du press-papiers.
- */
-public class Buffer extends Subject {
+
+public class Buffer extends Subject { // Il est observé
 
 	private String texte;
-	private PressePapiers pressePapiers;
 	private Selection selection;
+	private PressePapiers pressePapiers;
 
 	public Buffer() {
-		observers = new ArrayList<Observer>();
 		texte = "";
-		pressePapiers = new PressePapiers();
 		selection = new Selection();
+		pressePapiers = new PressePapiers();
+		observers = new ArrayList<Observer>();
+	}
+
+
+	public void taper(char type) {
+		String clipboard = pressePapiers.getContent();
+		int i = selection.getStart();
+		if (selection.getLength() == 0) {
+			texte = texte.substring(0, i) + type + texte.substring(i);
+			selection.setStart(i + 1);
+		} else {
+			texte = texte.substring(0, i) + type + texte.substring(i + selection.getLength());
+			selection.setStart(i + 1);
+			selection.setLength(0);
+		}
+		notifyMyObservers();
 	}
 
 	public String getTexte() {
 		return texte;
 	}
-
-	/**
-	 * Copie le texte sélectionné dans le presse-papiers en remplaçant l'ancien
-	 * et supprime le texte sélectionné du buffer ;
-	 */
-	public void couper() {
-		if (selection.getLength() > 0) {
-			pressePapiers.setContent(getSelection());
-			texte = texte.substring(0, selection.getStart())
-					+ texte.substring(selection.getStart()
-							+ selection.getLength());
-			selection.setLength(0);
-			notifyObservers();
-		}
-	}
-
 
 	public void copier() {
 		if (selection.getLength() > 0) {
@@ -49,43 +46,31 @@ public class Buffer extends Subject {
 		}
 	}
 
+	public void couper() {
+		if (selection.getLength() > 0) {
+			pressePapiers.setContent(getSelection());
+			int selStart = selection.getStart();
+			texte = texte.substring(0, selStart) + texte.substring(selStart + selection.getLength());
+			selection.setLength(0);
+			notifyMyObservers();
+		}
+	}
+
+
 
 	public void coller() {
-		int i = selection.getStart();
+		int selStart = selection.getStart();
+		String clipboard = pressePapiers.getContent();
 		if (selection.getLength() == 0) {
-			texte = texte.substring(0, i) + pressePapiers.getContent()
-					+ texte.substring(i);
-			selection.setStart(i + pressePapiers.getContent().length());
+			texte = texte.substring(0, selStart) + clipboard + texte.substring(selStart);
+			selection.setStart(selStart + clipboard.length());
 		} else {
-			texte = texte.substring(0, i) + pressePapiers.getContent()
-					+ texte.substring(i + selection.getLength());
-			selection.setStart(i + pressePapiers.getContent().length());
+			texte = texte.substring(0, selStart) + clipboard + texte.substring(selStart + selection.getLength());
+			selection.setStart(selStart + clipboard.length());
 			selection.setLength(0);
 		}
-		notifyObservers();
+		notifyMyObservers();
 	}
-
-	/**
-	 * Insère le caractère tapé dans le buffer à l'emplacement du curseur, ou à
-	 * la place du texte sélectionné.
-	 * 
-	 * @param c
-	 *            le caractère tapé
-	 */
-	public void taper(char c) {
-		int i = selection.getStart();
-		if (selection.getLength() == 0) {
-			texte = texte.substring(0, i) + c + texte.substring(i);
-			selection.setStart(i + 1);
-		} else {
-			texte = texte.substring(0, i) + c
-					+ texte.substring(i + selection.getLength());
-			selection.setStart(i + 1);
-			selection.setLength(0);
-		}
-		notifyObservers();
-	}
-
 
 	public void supprimer() {
 		int start = selection.getStart();
@@ -97,36 +82,33 @@ public class Buffer extends Subject {
 			texte = texte.substring(0, start - 1) + texte.substring(start);
 			selection.setStart(start - 1);
 		}		
-		notifyObservers();
+		notifyMyObservers();
 	}
 
-	/**
-	 * Renvoie la sous-chaîne du texte actuellement sélectionnée.
-	 * 
-	 * @return le texte sélectionné
-	 */
+
 	public String getSelection() {
-		int i = selection.getStart(), l = selection.getLength();
-		if (selection.getLength() > 0) {
-			return texte.substring(i, i + l);
+		int start = selection.getStart();
+		int length = selection.getLength();
+		if (length > 0) {
+			return texte.substring(start, start + length);
 		} else {
 			return "";
 		}
 	}
 	
-	public int getSelectionDebut() {
+	public int getSelectStart() {
 		return selection.getStart();
 	}
 	
-	public int getSelectionLongueur() {
+	public int getSelectLength() {
 		return selection.getLength();
 	}
 
 	@Override
-	public void notifyObservers() {
+	public void notifyMyObservers() {
 		for (Iterator<Observer> it = observers.iterator(); it.hasNext();) {
-			Observer o = it.next();
-			o.notifyIhm();
+			Observer observer = it.next();
+			observer.getNotifield();
 		}
 	}
 
@@ -141,8 +123,8 @@ public class Buffer extends Subject {
 		observers.remove(o);
 	}
 
-	public void setSelection(int debut, int longueur) {
-		selection.setStart(debut);
-		selection.setLength(longueur);
+	public void setSelection(int start, int length) {
+		selection.setStart(start);
+		selection.setLength(length);
 	}
 }
