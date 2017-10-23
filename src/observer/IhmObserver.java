@@ -17,5 +17,4 @@ public class IhmObserver extends IHM implements Observer {
 		Buffer buffer = (Buffer) subject;
 		textArea.refresh(buffer.getTexte(), buffer.getSelectStart(), buffer.getSelectLength());
 	}
-
 }

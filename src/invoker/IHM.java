@@ -1,25 +1,17 @@
 
 package invoker;
 
+import command.Command;
+
+import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.HashMap;
-
-import javax.swing.BoxLayout;
-import javax.swing.JFrame;
-import javax.swing.JScrollPane;
-
-import command.Command;
 
 public class IHM {
 
 	private JFrame frame;
-	private Collection<myButton> buttons;
-
 	protected TextArea textArea;
-
 
 	private Command couper;
 	private Command copier;
@@ -29,13 +21,10 @@ public class IHM {
 	private Command supprimer;
 
 	public IHM() {
-		frame = new JFrame("MiniEditeur v1");
+		frame = new JFrame("Mini Editeur 1.0");
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.setLayout(new BoxLayout(frame.getContentPane(), BoxLayout.Y_AXIS));
-
-		buttons = new ArrayList<myButton>();
 	}
-
 
 	public void show() {
 		frame.pack();
@@ -43,10 +32,8 @@ public class IHM {
 		frame.setVisible(true);
 	}
 
-
 	private void addButton(String nom, Command cmd) {
 		myButton bouton = new myButton(nom, cmd);
-		buttons.add(bouton);
 
 		bouton.addActionListener(new ActionListener() {
 			@Override
@@ -65,7 +52,6 @@ public class IHM {
 		addButton("Coller", coller);
 	}
 
-
 	public void addTextArea(int rows, int cols) {
 		HashMap<String, Command> cmds = new HashMap<String, Command>();
 		cmds.put("selectionner", selectionner);
@@ -78,15 +64,9 @@ public class IHM {
 		frame.add(scroll);
 	}
 
-	/**
-	 * Obtient le plus récent caractère tapé dans la zone de texte.
-	 * 
-	 * @return char c
-	 */
 	public char getChar() {
 		return textArea.getLastChar();
 	}
-
 
 	public int getDebutSelection() {
 		return textArea.getSelectStart();
@@ -96,14 +76,13 @@ public class IHM {
 		return textArea.getSelectLength();
 	}
 
-	// Initialise les commandes
-	public void setCommands(HashMap<String, Command> h){
-		this.couper = h.get("couper");
-		this.copier = h.get("copier");
-		this.coller = h.get("coller");
-		this.selectionner = h.get("selectionner");
-		this.taper = h.get("taper");
-		this.supprimer = h.get("supprimer");
+	public void setCommands(HashMap<String, Command> cmds){
+		this.couper = cmds.get("couper");
+		this.copier = cmds.get("copier");
+		this.coller = cmds.get("coller");
+		this.selectionner = cmds.get("selectionner");
+		this.taper = cmds.get("taper");
+		this.supprimer = cmds.get("supprimer");
 	}
 
 }

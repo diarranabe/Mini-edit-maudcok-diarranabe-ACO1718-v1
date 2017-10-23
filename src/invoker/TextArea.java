@@ -47,23 +47,21 @@ public class TextArea extends JTextArea {
 	}
 
 
-	public TextArea(HashMap<String, Command> h) {
+	public TextArea(HashMap<String, Command> cmds) {
 
-
-		Command selectionner = h.get("selectionner");
-		Command taper = h.get("taper");
-		Command supprimer = h.get("supprimer");
+		Command selectionner = cmds.get("selectionner");
+		Command taper = cmds.get("taper");
+		Command supprimer = cmds.get("supprimer");
 
 		addCaretListener(new CaretListener() {
-
 			@Override
 			public void caretUpdate(CaretEvent e) {
-				int i = Math.min(e.getDot(), e.getMark());
-				int j = Math.max(e.getDot(), e.getMark());
-				int l = j - i;
+				int start = Math.min(e.getDot(), e.getMark());
+				int end = Math.max(e.getDot(), e.getMark());
+				int length = end - start;
 
-				if (i != getSelectStart() || l != getSelectLength()) {
-					setSelect(i, l);
+				if (start != getSelectStart() || length != getSelectLength()) {
+					setSelect(start, length);
 					selectionner.execute();
 				}
 			}

@@ -24,13 +24,13 @@ public class Buffer extends Subject { // Il est observé
 
 	public void taper(char type) {
 		String clipboard = pressePapiers.getContent();
-		int i = selection.getStart();
+		int start = selection.getStart();
 		if (selection.getLength() == 0) {
-			texte = texte.substring(0, i) + type + texte.substring(i);
-			selection.setStart(i + 1);
+			texte = texte.substring(0, start) + type + texte.substring(start);
+			selection.setStart(start + 1);
 		} else {
-			texte = texte.substring(0, i) + type + texte.substring(i + selection.getLength());
-			selection.setStart(i + 1);
+			texte = texte.substring(0, start) + type + texte.substring(start + selection.getLength());
+			selection.setStart(start + 1);
 			selection.setLength(0);
 		}
 		notifyMyObservers();
