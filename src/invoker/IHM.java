@@ -2,6 +2,7 @@
 package invoker;
 
 import command.Command;
+import command.CommandM;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -19,6 +20,9 @@ public class IHM {
 	private Command selectionner;
 	private Command taper;
 	private Command supprimer;
+
+	private CommandM faire;
+	private CommandM defaire;
 
 	public IHM() {
 		frame = new JFrame("Mini Editeur 1.0");
@@ -45,12 +49,40 @@ public class IHM {
 		frame.add(bouton);
 	}
 
+	/*
+	Momento ***
+	 */
+
+	private void addButton(String nom, CommandM cmd) {
+		myButton bouton = new myButton(nom, cmd);
+
+		bouton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				textArea.requestFocusInWindow();
+			}
+		});
+
+		frame.add(bouton);
+	}
+	/*
+	Momento ***
+	 */
 
 	public void initButtons() {
-		addButton("Couper", couper);
-		addButton("Copier", copier);
-		addButton("Coller", coller);
+		addButton("Couper",  couper);
+		addButton("Copier",  copier);
+		addButton("Coller",  coller);
+	/*
+	Momento ***
+	 */
+		addButton("Faire",   faire);
+		addButton("Defaire", defaire);
+			/*
+	Momento ***
+	 */
 	}
+
 
 	public void addTextArea(int rows, int cols) {
 		HashMap<String, Command> cmds = new HashMap<String, Command>();
@@ -83,6 +115,10 @@ public class IHM {
 		this.selectionner = cmds.get("selectionner");
 		this.taper = cmds.get("taper");
 		this.supprimer = cmds.get("supprimer");
+	}
+	public void setCommandMs(HashMap<String, CommandM> cmds){
+		this.faire = cmds.get("faire");
+		this.defaire = cmds.get("defaire");
 	}
 
 }
