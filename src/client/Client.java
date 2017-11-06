@@ -2,8 +2,6 @@
 package client;
 
 import java.util.HashMap;
-
-import momento.KamiMomento;
 import observer.IhmObserver;
 import receiver.Buffer;
 import command.*;
@@ -13,20 +11,13 @@ public class Client {
 	private static final int ZONE_TEXTE_COLS = 70;
 
 	private static Buffer buffer;
-	private static KamiMomento kamiMomento;
 	private static IhmObserver ihm;
 	private static HashMap<String, Command> commmands;
-	private static HashMap<String, CommandM> commmandMs;
 
 	public static void main(String[] args) throws Exception {
 
 		buffer = new Buffer();
 		ihm = new IhmObserver(buffer);
-
-		/*
-		Momento
-		 */
-		kamiMomento = new KamiMomento() ;
 
 		commmands = new HashMap<String, Command>();
 		commmands.put("couper", new Couper(buffer));
@@ -37,19 +28,12 @@ public class Client {
 		commmands.put("supprimer", new Supprimer(buffer));
 		ihm.setCommands(commmands);
 
-		commmandMs = new HashMap<String, CommandM>();
-		commmandMs.put("faire", new faire(kamiMomento));
-		commmandMs.put("defaire", new defaire(kamiMomento));
-		ihm.setCommandMs(commmandMs);
-
-		buffer.conectMomento(kamiMomento);
-
 		// mise en place de l'observer
 		buffer.addObserver(ihm);
 
 		// finalisation de l'ihm
-		ihm.initButtons();
 		ihm.addTextArea(ZONE_TEXTE_ROWS, ZONE_TEXTE_COLS);
+		ihm.initButtons();
 		ihm.show();
 	}
 

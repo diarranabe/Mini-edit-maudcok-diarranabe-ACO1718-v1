@@ -6,7 +6,6 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 
 import command.Command;
-import command.CommandM;
 
 public class myButton extends JButton {
 	private String label;
@@ -30,21 +29,5 @@ public class myButton extends JButton {
 			}
 		});
 	}
-	/*
-	Momento
-	 */
-	public myButton(String label, final CommandM cmd) {
-		super(label);
-		this.label = label;
-		this.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				cmd.execute();
-			}
-		});
-	}
-		/*
-	Momento
-	 */
 
 }
