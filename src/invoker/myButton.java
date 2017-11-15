@@ -20,6 +20,11 @@ public class myButton extends JButton {
 		return label;
 	}
 
+	/**
+	 * Instanaciation with a Command
+	 * @param label button's label
+	 * @param cmd button's Command
+	 */
 	public myButton(String label, final Command cmd) {
 		super(label);
 		this.label = label;
@@ -30,8 +35,11 @@ public class myButton extends JButton {
 			}
 		});
 	}
-	/*
-	Momento
+
+	/**
+	 * Instanciation with a Momento command
+	 * @param label the label
+	 * @param cmd Momento command
 	 */
 	public myButton(String label, final CommandM cmd) {
 		super(label);
@@ -43,8 +51,4 @@ public class myButton extends JButton {
 			}
 		});
 	}
-		/*
-	Momento
-	 */
-
 }

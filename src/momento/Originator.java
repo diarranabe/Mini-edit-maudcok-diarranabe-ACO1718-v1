@@ -1,43 +1,49 @@
 package momento;
 
-import observer.Subject;
-import receiver.Buffer;
-import receiver.PressePapiers;
 import receiver.Selection;
-import sun.misc.resources.Messages_pt_BR;
 
 public class Originator {
 
-    private String stateValuer  ;
-    private Selection select = new Selection() ;
+    private String stateValue;
+    private Selection selection = new Selection() ;
 
-    /*
-    * Initialisation du momento
-    * */
-    public void setSubject(String stateValuer,int start ,int lenght) {
-        this.stateValuer = stateValuer;
-        this.select.setStart(start);
-        this.select.setLength(lenght);
+    /**
+     * Initialisation du momento
+     * @param stateValue
+     * @param start
+     * @param lenght
+     */
+    public void setSubject(String stateValue,int start ,int lenght) {
+        this.stateValue = stateValue;
+        this.selection.setStart(start);
+        this.selection.setLength(lenght);
     }
 
-    /*
-    * Enregistrement du momento
-    * */
+    /**
+     * Enregistrement du momento
+     * @return
+     */
     public Momento storeMomento() {
-        return new Momento(stateValuer,select);
+        return new Momento(stateValue, selection);
     }
 
-    /*
-    * Recuperation de l'etat du momento
-    * */
+    /**
+     * Recuperation de l'etat du momento
+     * @param momento
+     * @return
+     */
     public String restoreMomentoStateValue(Momento momento) {
-        stateValuer = momento.getStateValuer();
-        return stateValuer;
+        stateValue = momento.getStateValue();
+        return stateValue;
     }
 
+    /**
+     * Recupération de la selection
+     * @param momento
+     * @return
+     */
     public Selection restoreMomentoSelection(Momento momento) {
-        select = momento.getSelect();
-        return select;
+        selection = momento.getSelect();
+        return selection;
     }
-
 }

@@ -1,7 +1,5 @@
 package momento;
 
-import receiver.Buffer;
-import receiver.PressePapiers;
 import receiver.Selection;
 
 public class Momento {
@@ -9,15 +7,17 @@ public class Momento {
     private String stateValuer  ;
     private Selection select ;
 
- //   private  Command commandState ;
-
-
+    /**
+     *
+     * @param stateValuer
+     * @param select
+     */
     public Momento(String stateValuer, Selection select) {
         this.stateValuer = stateValuer;
         this.select = select;
     }
 
-    public String getStateValuer() {
+    public String getStateValue() {
         return stateValuer;
     }
 
