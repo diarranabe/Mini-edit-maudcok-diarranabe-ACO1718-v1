@@ -56,7 +56,7 @@ public class KamiMacro {
     }
 
     /**
-     * Jouer la Macro
+     * Jouer la Macro enregistrer
      */
     public void jouer() {
         if (buffer!= null){
@@ -115,7 +115,10 @@ public class KamiMacro {
         thread.run();}
     }
 
-
+    /**
+     *
+     * @return Etat de la machine a macros
+     */
     public int getStatue() {
         return statue;
     }
@@ -130,6 +133,9 @@ public class KamiMacro {
         caretaker.eraseFuture();
     }
 
+    /**
+     *  Met le status de la machine macro a 0
+     */
     public void StopRecord() {
         statue = 0;
     }
