@@ -3,6 +3,7 @@ package invoker;
 
 import command.Command;
 import command.CommandM;
+import command.CommandMacro;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -23,6 +24,11 @@ public class IHM {
 
 	private CommandM faire;
 	private CommandM defaire;
+
+	private CommandMacro play ;
+	private CommandMacro record ;
+	private CommandMacro stop ;
+
 
 	public IHM() {
 		frame = new JFrame("Mini Editeur 1.0");
@@ -65,6 +71,20 @@ public class IHM {
 
 		frame.add(bouton);
 	}
+
+
+	private void addButton(String nom, CommandMacro cmd) {
+		myButton bouton = new myButton(nom, cmd);
+
+		bouton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				textArea.requestFocusInWindow();
+			}
+		});
+
+		frame.add(bouton);
+	}
 	/*
 	Momento ***
 	 */
@@ -81,6 +101,11 @@ public class IHM {
 			/*
 	Momento ***
 	 */
+
+		addButton("Play",   play);
+		addButton("Record", record);
+		addButton("Stop", stop);
+
 	}
 
 
@@ -119,6 +144,12 @@ public class IHM {
 	public void setCommandMs(HashMap<String, CommandM> cmds){
 		this.faire = cmds.get("faire");
 		this.defaire = cmds.get("defaire");
+	}
+
+	public void setCommandMacro(HashMap<String, CommandMacro> cmds){
+		this.play = cmds.get("play");
+		this.record = cmds.get("record");
+		this.stop = cmds.get("stop");
 	}
 
 }

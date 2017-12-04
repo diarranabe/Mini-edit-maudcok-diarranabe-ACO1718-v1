@@ -9,7 +9,9 @@ import java.util.Iterator;
 
 public class KamiMomento {
 
-    private Buffer buffer;
+    private Buffer buffer ;
+
+
 
 
     CareTaker caretaker = new CareTaker();
@@ -23,6 +25,8 @@ public class KamiMomento {
     ArrayList<Observer> observers = new ArrayList<Observer>();
 
 
+
+
     int sizeMomento = 0, currentSatesubject = 0;
 
 
@@ -33,97 +37,93 @@ public class KamiMomento {
             currentSatesubject++;
 
             // Get the newer article saved and display it in JTextArea
-            notifiedObserver(
-                    originator.restoreMomentoStateValue(caretaker.getMomento(currentSatesubject)),
-                    originator.restoreMomentoSelection(caretaker.getMomento(currentSatesubject)));
+
+            NotifiedObserver(originator.restoreMomentoStateValue(caretaker.getMomento(currentSatesubject)),originator.restoreMomentoSelection(caretaker.getMomento(currentSatesubject)));
+
 
             // mise ajour de lecran
-            //  theArticle.setText(state);
+          //  theArticle.setText(state);
 
             // Make undo clickable
-            //   undoBut.setEnabled(true);
-            //   notifiedObserver();
+         //   undoBut.setEnabled(true);
+         //   NotifiedObserver();
 
         } else {
             // Don't allow user to click Redo
-            //   redoBut.setEnabled(false);
+         //   redoBut.setEnabled(false);
 
         }
 
 
     }
 
-    public void defaire() {
-        if (currentSatesubject >= 1) {
+    public void defaire(){
+        if(currentSatesubject >= 1){
             // Decrement to the current article displayed
             currentSatesubject--;
             // Get the older article saved and display it in JTextArea
 
-            notifiedObserver(
-                    originator.restoreMomentoStateValue(caretaker.getMomento(currentSatesubject)),
-                    originator.restoreMomentoSelection(caretaker.getMomento(currentSatesubject)));
-            // theArticle.setText(textBoxString);
+            NotifiedObserver(originator.restoreMomentoStateValue(caretaker.getMomento(currentSatesubject)),originator.restoreMomentoSelection(caretaker.getMomento(currentSatesubject)));
+           // theArticle.setText(textBoxString);
             // Make Redo clickable
-            //  redoBut.setEnabled(true);
-            //  notifiedObserver();
+          //  redoBut.setEnabled(true);
+          //  NotifiedObserver();
 
         } else {
 
             // Don't allow user to click Undo
-            // undoBut.setEnabled(false);
+           // undoBut.setEnabled(false);
 
         }
 
     }
 
-    public void saveMomento(Buffer buffer) {
+    public void saveMomento(Buffer buffer){
 
-        System.out.println("Buffer momento " + buffer.getTexte());
+/*        System.out.println("Buffer momento " + buffer.getTexte());
         System.out.println("Selection start " + buffer.getSelectStart());
-        System.out.println("Selection lenght " + buffer.getSelectLength());
+        System.out.println("Selection lenght " + buffer.getSelectLength());*/
 
         /*
         if cure different of size restart writing on cure position
          */
-        if (currentSatesubject < sizeMomento) {
-            buffer.setSelection(0, buffer.getTexte().length());
-            buffer.supprimer();
-        }
-        originator.setSubject(
-                buffer.getTexte(), buffer.getSelectStart(),
-                buffer.getSelectLength());
+        if (currentSatesubject < sizeMomento){
 
+            buffer.initBuffer(originator.restoreMomentoStateValue(caretaker.getMomento(currentSatesubject)));
+            sizeMomento = currentSatesubject ;
+
+
+
+        }
+        originator.setSubject(buffer.getTexte(),buffer.getSelectStart(),buffer.getSelectLength());
         // Add new article to the ArrayList
-        caretaker.addMomento(originator.storeMomento());
+        caretaker.addMomento( originator.storeMomento() );
         // saveFiles monitors how many articles are saved
         // currentArticle monitors the current article displayed
         sizeMomento++;
         currentSatesubject++;
-        System.out.println("Save momento " + sizeMomento);
+   /*     System.out.println("Save momento " + sizeMomento);
         System.out.println("cure momento " + currentSatesubject);
-        System.out.println("cure momento value = " + buffer.getTexte());
+        System.out.println("cure momento value = " + buffer.getTexte());*/
         // Make undo clickable
-        // undoBut.setEnabled(true);
+       // undoBut.setEnabled(true);
 
     }
 
-    public void addObserver(Observer observer) {
-        this.observers.add(observer);
+    public void addObserver(Observer observers) {
+        this.observers.add(observers);
     }
 
-    public void notifiedObserver(String text, Selection selection) {
+    public void NotifiedObserver(String s, Selection ss){
 
-        System.out.println("cure momento " + currentSatesubject);
+  //      System.out.println("cure momento " + currentSatesubject);
 
         Selection sel = new Selection();
-        sel.setStart(0);
-        sel.setLength(0);
+        sel.setStart(0);sel.setLength(0);
         for (Iterator<Observer> it = observers.iterator(); it.hasNext(); ) {
             Observer observer = it.next();
-
-            observer.getNotifield("", sel);//why?
-
-            observer.getNotifield(text, selection);
+            observer.getNotifield("",sel);
+            observer.getNotifield(s,ss);
 
         }
     }

@@ -7,6 +7,7 @@ import javax.swing.JButton;
 
 import command.Command;
 import command.CommandM;
+import command.CommandMacro;
 
 public class myButton extends JButton {
 	private String label;
@@ -20,11 +21,6 @@ public class myButton extends JButton {
 		return label;
 	}
 
-	/**
-	 * Instanaciation with a Command
-	 * @param label button's label
-	 * @param cmd button's Command
-	 */
 	public myButton(String label, final Command cmd) {
 		super(label);
 		this.label = label;
@@ -35,11 +31,8 @@ public class myButton extends JButton {
 			}
 		});
 	}
-
-	/**
-	 * Instanciation with a Momento command
-	 * @param label the label
-	 * @param cmd Momento command
+	/*
+	Momento
 	 */
 	public myButton(String label, final CommandM cmd) {
 		super(label);
@@ -51,4 +44,23 @@ public class myButton extends JButton {
 			}
 		});
 	}
+
+
+	/*
+	Momento
+	 */
+	public myButton(String label, final CommandMacro cmd) {
+		super(label);
+		this.label = label;
+		this.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				cmd.execute();
+			}
+		});
+	}
+		/*
+	Momento
+	 */
+
 }
