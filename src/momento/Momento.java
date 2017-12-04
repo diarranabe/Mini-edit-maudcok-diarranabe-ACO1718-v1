@@ -1,15 +1,14 @@
 package momento;
 
-import receiver.Buffer;
-import receiver.PressePapiers;
+
 import receiver.Selection;
 
 public class Momento {
 
-    private String stateValuer ;
-    private Selection select ;
+    private final String stateValuer;
+    private final Selection select;
 
- //   private  Command commandState ;
+    //   private  Command commandState ;
 
 
     public Momento(String stateValuer, Selection select) {

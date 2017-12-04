@@ -1,12 +1,8 @@
 package momento;
 
-import observer.Subject;
-import receiver.Buffer;
-import receiver.PressePapiers;
 import receiver.Selection;
-import sun.misc.resources.Messages_pt_BR;
 
-public class Originator {
+class Originator {
 
     private String stateValuer  ;
     private Selection select = new Selection() ;

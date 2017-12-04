@@ -7,7 +7,7 @@ import receiver.Selection;
 
 public class IhmObserver extends IHM implements Observer {
 
-	protected Subject subject;
+	private final Subject subject;
 	
 	public IhmObserver(Subject sub) {
 		subject = sub;

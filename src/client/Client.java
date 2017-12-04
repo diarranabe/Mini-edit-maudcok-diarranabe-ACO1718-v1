@@ -9,7 +9,7 @@ import observer.IhmObserver;
 import receiver.Buffer;
 import command.*;
 
-public class Client {
+class Client {
 	private static final int ZONE_TEXTE_ROWS = 40;
 	private static final int ZONE_TEXTE_COLS = 70;
 

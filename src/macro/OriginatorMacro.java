@@ -1,8 +1,6 @@
 package macro;
 
-import receiver.Selection;
-
-public class OriginatorMacro {
+class OriginatorMacro {
 
     private String actionCmd ;
     private char stateValuer  ;
@@ -14,12 +12,12 @@ public class OriginatorMacro {
             * Initialisation du momentoMacro
             *
             * */
-    public void setAction( String actionCmd, char stateValuer,int start ,int lenght) {
+    public void setAction(String actionCmd, char stateValuer, int start, int slenght) {
         this.stateValuer = stateValuer;
         this.start =start;
         this.slenght =slenght;
         this.actionCmd = actionCmd ;
-        System.out.println(start + " " + slenght );
+        System.out.println(start + " " );
 
     }
 

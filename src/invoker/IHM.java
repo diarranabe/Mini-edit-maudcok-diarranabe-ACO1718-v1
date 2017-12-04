@@ -12,7 +12,7 @@ import java.util.HashMap;
 
 public class IHM {
 
-	private JFrame frame;
+	private final JFrame frame;
 	protected TextArea textArea;
 
 	private Command couper;
@@ -30,7 +30,7 @@ public class IHM {
 	private CommandMacro stop ;
 
 
-	public IHM() {
+	protected IHM() {
 		frame = new JFrame("Mini Editeur 1.0");
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.setLayout(new BoxLayout(frame.getContentPane(), BoxLayout.Y_AXIS));

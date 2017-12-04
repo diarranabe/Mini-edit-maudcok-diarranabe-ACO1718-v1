@@ -2,9 +2,9 @@ package macro;
 
 import java.util.ArrayList;
 
-public class CareTakerMacro {
+class CareTakerMacro {
 
-    private  ArrayList<MomentoMacro> momentos = new ArrayList<MomentoMacro>() ;
+    private final ArrayList<MomentoMacro> momentos = new ArrayList<MomentoMacro>() ;
 
     /*
     Ajoute un MomentoMacro a la liste MomentoMacros

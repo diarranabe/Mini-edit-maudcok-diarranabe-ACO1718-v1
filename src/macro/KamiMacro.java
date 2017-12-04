@@ -1,16 +1,12 @@
 package macro;
 
-import observer.Observer;
 import receiver.Buffer;
 import receiver.Selection;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-
 public class KamiMacro {
 
-    int TimeZero;
-    int ss ;
+    private int TimeZero;
+    private int ss ;
 
     private Buffer buffer;
     /**
@@ -21,15 +17,15 @@ public class KamiMacro {
     private int statue = 0;
 
 
-    CareTakerMacro caretaker = new CareTakerMacro();
+    private final CareTakerMacro caretaker = new CareTakerMacro();
 
     //  originator cree une valeur pour les statesubject,
 
     // creation d un momento avec ce satesubject
     // recuperation du momento du sujet
-    OriginatorMacro originator = new OriginatorMacro();
+    private final OriginatorMacro originator = new OriginatorMacro();
 
-    ArrayList<Observer> observers = new ArrayList<Observer>();
+    // --Commented out by Inspection (04/12/2017 14:24):ArrayList<Observer> observers = new ArrayList<Observer>();
     private int siezemacro = 0;
 
 
@@ -42,10 +38,9 @@ public class KamiMacro {
      */
     public void enregistrer(String actionCmd, char stateValuer, Selection select) {
         int timeswap = select.getStart() - TimeZero;
-        TimeZero = buffer.getSelectStart();
-
-        System.out.println(" macro start = " + select.getStart() +" zeropos = "+ TimeZero +" Swap = " +timeswap+ " Cmd = " +actionCmd );
-
+        System.out.println("Lenght -> "+ select.getLength()+" curs pos = " + select.getStart() +" zeropos = "+ TimeZero +" Swap = " +timeswap+ " Cmd = " +actionCmd );
+      //  TimeZero = buffer.getSelectStart();
+        TimeZero = select.getStart();
 
         originator.setAction(actionCmd, stateValuer, timeswap, select.getLength());
         // Add new article to the ArrayList
@@ -73,27 +68,29 @@ public class KamiMacro {
                     int lenght = originator.restoreMacroLenghtn(momentoMacro);
                     int timeswap = originator.restoreMacroSart(momentoMacro);
                    // if (timeswap<0)timeswap-- ;
-                    System.out.println("timeSwap => " + timeswap);
+int auxx = ss + timeswap ;
                     char stape = originator.restoreMacroStateValue(momentoMacro);
- System.out.println(" zeropos = "+ ss +" Swap = " +timeswap+ " Cmd = " +originator.restoreMacroAction(momentoMacro) + " Value = -" + stape+"-");
+ System.out.println(" zeropos = "+ ss +" Swap = " +timeswap+" go-to "+ auxx+ " Cmd = " +originator.restoreMacroAction(momentoMacro) + " Value = -" + stape+"-");
                     switch (originator.restoreMacroAction(momentoMacro)) {
                         case "copier":
+
                             buffer.setSelection(ss + timeswap, lenght);
+                            ss+=timeswap ;
                             buffer.copier();
                             break;
                         case "couper":
+                            System.out.println("lenght  -> " + lenght);
                             buffer.setSelection(ss + timeswap, lenght);
-                            if (timeswap< 0)
-                            ss+=lenght ;
+                            ss+=timeswap ;
                             buffer.couper();
                             break;
                         case "coller":
                             buffer.setSelection(ss + timeswap, lenght);
-                            ss+=lenght ;
+                            ss+=lenght + timeswap ;
                             buffer.coller();
                             break;
                         case "taper":
-                            if (timeswap>0){
+                            if (timeswap>=0){
                                 buffer.taper(stape);
                             }else {
                                 buffer.setSelection(ss + timeswap, lenght);
@@ -104,7 +101,7 @@ public class KamiMacro {
                             break;
                     }
                     try {
-                        this.sleep(750);
+                        this.sleep(10);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
@@ -131,6 +128,8 @@ public class KamiMacro {
         statue = 2;
         siezemacro=0;
         caretaker.eraseFuture();
+
+        System.out.println(" Debut de l'enregistrment ");
     }
 
     /**
@@ -138,5 +137,6 @@ public class KamiMacro {
      */
     public void StopRecord() {
         statue = 0;
+        System.out.println(" Fin de l'enregistrment ");
     }
 }

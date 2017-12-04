@@ -4,10 +4,10 @@ import receiver.Selection;
 
 public class MomentoMacro {
 
-    private String actionCmd;
-    private char stateValuer;
-    private int start;
-    private int slenght;
+    private final String actionCmd;
+    private final char stateValuer;
+    private final int start;
+    private final int slenght;
 
     public MomentoMacro(String actionCmd, char stateValuer, int start, int slenght) {
         this.actionCmd = actionCmd;

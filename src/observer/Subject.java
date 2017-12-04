@@ -8,11 +8,11 @@ public abstract class Subject {
 	protected Collection<Observer> observers;
 
 
-	public abstract void notifyMyObservers();
+	// --Commented out by Inspection (04/12/2017 14:24):public abstract void notifyMyObservers();
 
 
-	public abstract void addObserver(Observer observer);
+	// --Commented out by Inspection (04/12/2017 14:24):public abstract void addObserver(Observer observer);
 
-	public abstract void removeObserver(Observer observer);
+	// --Commented out by Inspection (04/12/2017 14:24):public abstract void removeObserver(Observer observer);
 
 }
