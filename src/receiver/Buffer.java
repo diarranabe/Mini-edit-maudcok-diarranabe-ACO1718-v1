@@ -13,8 +13,8 @@ import observer.Subject;
 public class Buffer extends Subject { // Il est observé
 
     private String texte;
-    private Selection selection;
-    private PressePapiers pressePapiers;
+    private final Selection selection;
+    private final PressePapiers pressePapiers;
     private static KamiMomento kamiMomento;
     private static KamiMacro kamiMacro;
 
@@ -67,14 +67,16 @@ public class Buffer extends Subject { // Il est observé
 
     public void couper()  {
         if (selection.getLength() > 0) {
+            System.out.println("start = " + selection.getStart() + " lenght " + selection.getLength() + " -> " + pressePapiers.getContent());
             pressePapiers.setContent(getSelection());
             int selStart = selection.getStart();
             texte = texte.substring(0, selStart) + texte.substring(selStart + selection.getLength());
-            selection.setLength(0);
+
 
             if (kamiMacro.getStatue() == 2 ){
                 kamiMacro.enregistrer("couper" , ' ', selection );
             }
+            selection.setLength(0);
             kamiMomento.saveMomento(this);
 
             notifyMyObservers();
@@ -137,7 +139,7 @@ public class Buffer extends Subject { // Il est observé
         return selection.getLength();
     }
 
-    @Override
+
     public void notifyMyObservers() {
 
         for (Iterator<Observer> it = observers.iterator(); it.hasNext(); ) {
@@ -147,13 +149,13 @@ public class Buffer extends Subject { // Il est observé
         }
     }
 
-    @Override
+
     public void addObserver(Observer o) {
         observers.add(o);
         kamiMomento.addObserver(o);
     }
 
-    @Override
+
     public void removeObserver(Observer o) {
         observers.remove(o);
     }
@@ -164,11 +166,11 @@ public class Buffer extends Subject { // Il est observé
     }
 
     public void conectMomento(KamiMomento kamiMomento) {
-        this.kamiMomento = kamiMomento;
+        Buffer.kamiMomento = kamiMomento;
 
     }
     public void conectMomento(KamiMacro kamiMacro) {
-        this.kamiMacro = kamiMacro;
+        Buffer.kamiMacro = kamiMacro;
 
     }
 }

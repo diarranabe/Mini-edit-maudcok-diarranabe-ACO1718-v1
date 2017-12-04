@@ -6,10 +6,12 @@ import invoker.IHM;
 
 public class Command
 {
-	protected static final boolean VERBOSE = false;
-	
-	protected Buffer buffer;
-	protected IHM ihm;
+	static final boolean VERBOSE = false;
+	/**
+	 *
+	 */
+	Buffer buffer;
+	IHM ihm;
 	
 	public  void execute(){};
 	

@@ -2,7 +2,7 @@
 
 package receiver;
 
-public class PressePapiers {
+class PressePapiers {
 	private String content = "";
 
 	public String getContent() {

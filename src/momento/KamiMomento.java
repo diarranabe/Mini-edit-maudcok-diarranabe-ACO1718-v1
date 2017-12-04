@@ -9,27 +9,30 @@ import java.util.Iterator;
 
 public class KamiMomento {
 
-    private Buffer buffer ;
+    // --Commented out by Inspection (04/12/2017 14:24):private Buffer buffer ;
 
 
 
 
-    CareTaker caretaker = new CareTaker();
+    private final CareTaker caretaker = new CareTaker();
 
     //  originator cree une valeur pour les statesubject,
 
     // creation d un momento avec ce satesubject
     // recuperation du momento du sujet
-    Originator originator = new Originator();
+    private final Originator originator = new Originator();
 
-    ArrayList<Observer> observers = new ArrayList<Observer>();
-
-
+    private final ArrayList<Observer> observers = new ArrayList<Observer>();
 
 
-    int sizeMomento = 0, currentSatesubject = 0;
 
 
+    private int sizeMomento = 0;
+    private int currentSatesubject = 0;
+
+    /**
+     *
+     */
     public void faire() {
 
         if ((sizeMomento - 1) > currentSatesubject) {
@@ -38,25 +41,23 @@ public class KamiMomento {
 
             // Get the newer article saved and display it in JTextArea
 
-            NotifiedObserver(originator.restoreMomentoStateValue(caretaker.getMomento(currentSatesubject)),originator.restoreMomentoSelection(caretaker.getMomento(currentSatesubject)));
+            NotifiedObserver(originator.restoreMomentoStateValue(caretaker.getMomento(currentSatesubject)), originator.restoreMomentoSelection(caretaker.getMomento(currentSatesubject)));
 
 
             // mise ajour de lecran
-          //  theArticle.setText(state);
+            //  theArticle.setText(state);
 
             // Make undo clickable
-         //   undoBut.setEnabled(true);
-         //   NotifiedObserver();
-
-        } else {
-            // Don't allow user to click Redo
-         //   redoBut.setEnabled(false);
-
+            //   undoBut.setEnabled(true);
+            //   NotifiedObserver();
         }
 
 
     }
 
+    /**
+     * Defaire
+     */
     public void defaire(){
         if(currentSatesubject >= 1){
             // Decrement to the current article displayed
@@ -69,24 +70,18 @@ public class KamiMomento {
           //  redoBut.setEnabled(true);
           //  NotifiedObserver();
 
-        } else {
-
-            // Don't allow user to click Undo
-           // undoBut.setEnabled(false);
 
         }
 
     }
 
+    /**
+     *  Enregistr un etet momento
+     * @param buffer
+     */
     public void saveMomento(Buffer buffer){
 
-/*        System.out.println("Buffer momento " + buffer.getTexte());
-        System.out.println("Selection start " + buffer.getSelectStart());
-        System.out.println("Selection lenght " + buffer.getSelectLength());*/
 
-        /*
-        if cure different of size restart writing on cure position
-         */
         if (currentSatesubject < sizeMomento){
 
             buffer.initBuffer(originator.restoreMomentoStateValue(caretaker.getMomento(currentSatesubject)));
@@ -110,11 +105,21 @@ public class KamiMomento {
 
     }
 
+    /**
+     * Ajoute un observer
+     * @param observers
+     */
     public void addObserver(Observer observers) {
         this.observers.add(observers);
     }
 
-    public void NotifiedObserver(String s, Selection ss){
+    /**
+     *  Notifie les Observer
+     *
+     * @param valeur
+     * @param contenue
+     */
+    private void NotifiedObserver(String valeur, Selection contenue){
 
   //      System.out.println("cure momento " + currentSatesubject);
 
@@ -123,7 +128,7 @@ public class KamiMomento {
         for (Iterator<Observer> it = observers.iterator(); it.hasNext(); ) {
             Observer observer = it.next();
             observer.getNotifield("",sel);
-            observer.getNotifield(s,ss);
+            observer.getNotifield(valeur,contenue);
 
         }
     }

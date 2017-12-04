@@ -7,10 +7,10 @@ import receiver.Buffer;
 
 public class CommandM {
 
-    protected KamiMomento kamiMomento;
-    protected IHM ihm;
-    protected Momento momento;
-    protected Buffer buffer;
+    KamiMomento kamiMomento;
+    // --Commented out by Inspection (04/12/2017 14:24):protected IHM ihm;
+    // --Commented out by Inspection (04/12/2017 14:24):protected Momento momento;
+    // --Commented out by Inspection (04/12/2017 14:24):protected Buffer buffer;
 
 
 

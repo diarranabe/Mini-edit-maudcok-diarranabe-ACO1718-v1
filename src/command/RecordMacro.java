@@ -4,7 +4,11 @@ import macro.KamiMacro;
 import receiver.Buffer;
 
 public class RecordMacro extends CommandMacro {
-
+    /**
+     *
+     * @param kamiMacro
+     * @param buffer
+     */
     public RecordMacro(KamiMacro kamiMacro, Buffer buffer) {
         this.buffer = buffer;
         this.kamiMacro = kamiMacro ;

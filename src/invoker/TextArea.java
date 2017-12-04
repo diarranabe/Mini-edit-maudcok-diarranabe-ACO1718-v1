@@ -20,7 +20,7 @@ public class TextArea extends JTextArea {
 	private int selectLength;
 
 
-	public void setContent(String text) {
+	private void setContent(String text) {
 		this.content = text;
 		this.setText(content);
 	}
@@ -37,14 +37,16 @@ public class TextArea extends JTextArea {
 		return selectLength;
 	}
 
-	public void setSelect(int start, int length) {
+	private void setSelect(int start, int length) {
 		selectStart = start;
 		selectLength = length;
 	}
 
-	public String getContent() {
-		return content;
-	}
+// --Commented out by Inspection START (04/12/2017 14:24):
+//	public String getContent() {
+//		return content;
+//	}
+// --Commented out by Inspection STOP (04/12/2017 14:24)
 
 
 	public TextArea(HashMap<String, Command> cmds) {
@@ -74,7 +76,8 @@ public class TextArea extends JTextArea {
 				e.consume();
 				char keyChar = e.getKeyChar();
 				if (keyChar != '\b') {
-					lastChar = keyChar;
+
+						lastChar = keyChar;
 					taper.execute();
 				}
 			}

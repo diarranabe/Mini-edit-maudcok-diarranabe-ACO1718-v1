@@ -9,7 +9,7 @@ import command.Command;
 import command.CommandM;
 import command.CommandMacro;
 
-public class myButton extends JButton {
+class myButton extends JButton {
 	private String label;
 
 	@Override

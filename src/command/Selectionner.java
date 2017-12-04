@@ -4,7 +4,11 @@ import invoker.IHM;
 import receiver.Buffer;
 
 public class Selectionner extends Command {
-
+	/**
+	 *
+	 * @param buffer
+	 * @param ihm
+	 */
 	public Selectionner(Buffer buffer, IHM ihm) {
 		this.buffer = buffer;
 		this.ihm = ihm;

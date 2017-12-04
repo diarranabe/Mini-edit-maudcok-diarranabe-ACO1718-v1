@@ -2,7 +2,7 @@ package momento;
 
 import receiver.Selection;
 
-public class Originator {
+class Originator {
 
     private String stateValue;
     private Selection selection = new Selection() ;
