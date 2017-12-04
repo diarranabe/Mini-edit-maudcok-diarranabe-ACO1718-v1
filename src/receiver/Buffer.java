@@ -4,6 +4,7 @@ package receiver;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import macro.KamiMacro;
 import momento.KamiMomento;
 import observer.Observer;
 import observer.Subject;
@@ -15,12 +16,18 @@ public class Buffer extends Subject { // Il est observé
     private Selection selection;
     private PressePapiers pressePapiers;
     private static KamiMomento kamiMomento;
+    private static KamiMacro kamiMacro;
 
     public Buffer() {
         texte = "";
         selection = new Selection();
         pressePapiers = new PressePapiers();
         observers = new ArrayList<Observer>();
+    }
+
+    public void initBuffer(String s){
+        texte = s;
+        setSelection(0,0);
     }
 
 
@@ -36,6 +43,11 @@ public class Buffer extends Subject { // Il est observé
             selection.setLength(0);
         }
         kamiMomento.saveMomento(this);
+        System.out.println("=> "+ kamiMacro.getStatue());
+        if (kamiMacro.getStatue() == 2 ){
+            kamiMacro.enregistrer("taper" , type, selection );
+
+        }
         notifyMyObservers();
     }
 
@@ -44,8 +56,12 @@ public class Buffer extends Subject { // Il est observé
     }
 
     public void copier() {
+
         if (selection.getLength() > 0) {
             pressePapiers.setContent(getSelection());
+            if (kamiMacro.getStatue() == 2 ){
+                kamiMacro.enregistrer("copier" , ' ', selection );
+            }
         }
     }
 
@@ -55,9 +71,13 @@ public class Buffer extends Subject { // Il est observé
             int selStart = selection.getStart();
             texte = texte.substring(0, selStart) + texte.substring(selStart + selection.getLength());
             selection.setLength(0);
-            notifyMyObservers();
 
+            if (kamiMacro.getStatue() == 2 ){
+                kamiMacro.enregistrer("couper" , ' ', selection );
+            }
             kamiMomento.saveMomento(this);
+
+            notifyMyObservers();
         }
     }
 
@@ -65,6 +85,7 @@ public class Buffer extends Subject { // Il est observé
     public void coller() {
         int selStart = selection.getStart();
         String clipboard = pressePapiers.getContent();
+        if (!clipboard.equals(""))
         if (selection.getLength() == 0) {
             texte = texte.substring(0, selStart) + clipboard + texte.substring(selStart);
             selection.setStart(selStart + clipboard.length());
@@ -74,6 +95,9 @@ public class Buffer extends Subject { // Il est observé
             selection.setLength(0);
         }
         kamiMomento.saveMomento(this);
+        if (kamiMacro.getStatue() == 2 ){
+            kamiMacro.enregistrer("coller" , ' ', selection );
+        }
         notifyMyObservers();
     }
 
@@ -86,6 +110,9 @@ public class Buffer extends Subject { // Il est observé
         } else if (start > 0) {
             texte = texte.substring(0, start - 1) + texte.substring(start);
             selection.setStart(start - 1);
+        }
+        if (kamiMacro.getStatue() == 2 ){
+            kamiMacro.enregistrer("supprimer" , ' ', selection );
         }
         kamiMomento.saveMomento(this);
         notifyMyObservers();
@@ -138,6 +165,10 @@ public class Buffer extends Subject { // Il est observé
 
     public void conectMomento(KamiMomento kamiMomento) {
         this.kamiMomento = kamiMomento;
+
+    }
+    public void conectMomento(KamiMacro kamiMacro) {
+        this.kamiMacro = kamiMacro;
 
     }
 }

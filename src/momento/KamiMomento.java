@@ -80,16 +80,18 @@ public class KamiMomento {
 
     public void saveMomento(Buffer buffer){
 
-        System.out.println("Buffer momento " + buffer.getTexte());
+/*        System.out.println("Buffer momento " + buffer.getTexte());
         System.out.println("Selection start " + buffer.getSelectStart());
-        System.out.println("Selection lenght " + buffer.getSelectLength());
+        System.out.println("Selection lenght " + buffer.getSelectLength());*/
 
         /*
         if cure different of size restart writing on cure position
          */
         if (currentSatesubject < sizeMomento){
-            buffer.setSelection(0,buffer.getTexte().length());
-            buffer.supprimer();
+
+            buffer.initBuffer(originator.restoreMomentoStateValue(caretaker.getMomento(currentSatesubject)));
+            sizeMomento = currentSatesubject ;
+
 
 
         }
@@ -100,9 +102,9 @@ public class KamiMomento {
         // currentArticle monitors the current article displayed
         sizeMomento++;
         currentSatesubject++;
-        System.out.println("Save momento " + sizeMomento);
+   /*     System.out.println("Save momento " + sizeMomento);
         System.out.println("cure momento " + currentSatesubject);
-        System.out.println("cure momento value = " + buffer.getTexte());
+        System.out.println("cure momento value = " + buffer.getTexte());*/
         // Make undo clickable
        // undoBut.setEnabled(true);
 
@@ -114,7 +116,7 @@ public class KamiMomento {
 
     public void NotifiedObserver(String s, Selection ss){
 
-        System.out.println("cure momento " + currentSatesubject);
+  //      System.out.println("cure momento " + currentSatesubject);
 
         Selection sel = new Selection();
         sel.setStart(0);sel.setLength(0);

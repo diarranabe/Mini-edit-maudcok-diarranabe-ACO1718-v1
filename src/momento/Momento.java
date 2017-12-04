@@ -6,7 +6,7 @@ import receiver.Selection;
 
 public class Momento {
 
-    private String stateValuer  ;
+    private String stateValuer ;
     private Selection select ;
 
  //   private  Command commandState ;
