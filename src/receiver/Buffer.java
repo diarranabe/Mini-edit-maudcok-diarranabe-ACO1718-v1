@@ -2,7 +2,6 @@
 package receiver;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 
 import macro.KamiMacro;
 import momento.KamiMomento;
@@ -22,7 +21,7 @@ public class Buffer extends Subject { // Il est observé
         texte = "";
         selection = new Selection();
         pressePapiers = new PressePapiers();
-        observers = new ArrayList<Observer>();
+        observers = new ArrayList<>();
     }
 
     public void initBuffer(String s){
@@ -30,9 +29,12 @@ public class Buffer extends Subject { // Il est observé
         setSelection(0,0);
     }
 
-
+    /**
+     * Insert le caractere taper dans le buffer
+     * @param type valeur entrer par l'utilisateur au clavier
+     */
     public void taper(char type) {
-        String clipboard = pressePapiers.getContent();
+
         int start = selection.getStart();
         if (selection.getLength() == 0) {
             texte = texte.substring(0, start) + type + texte.substring(start);
@@ -51,6 +53,10 @@ public class Buffer extends Subject { // Il est observé
         notifyMyObservers();
     }
 
+    /**
+     *
+     * @return le contenu du Buffer
+     */
     public String getTexte() {
         return texte;
     }
@@ -139,11 +145,12 @@ public class Buffer extends Subject { // Il est observé
         return selection.getLength();
     }
 
+    /**
+     * Notified all observer
+     */
+    private void notifyMyObservers() {
 
-    public void notifyMyObservers() {
-
-        for (Iterator<Observer> it = observers.iterator(); it.hasNext(); ) {
-            Observer observer = it.next();
+        for (Observer observer : observers) {
             observer.getNotifield();
 
         }

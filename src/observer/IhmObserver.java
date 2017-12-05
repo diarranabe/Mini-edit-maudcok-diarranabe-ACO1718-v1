@@ -22,6 +22,6 @@ public class IhmObserver extends IHM implements Observer {
 	Momento
 	 */
 	public void getNotifield(String s , Selection ss) {
-		textArea.refresh(s.toString(), ss.getStart(), ss.getLength());
+		textArea.refresh(s, ss.getStart(), ss.getLength());
 	}
 }

@@ -5,7 +5,7 @@ import macro.KamiMacro;
 public class PlayMacro extends CommandMacro {
     /**
      *
-     * @param kamiMacro
+     * @param kamiMacro l'instance de notre objet Macro
      */
     public PlayMacro(KamiMacro kamiMacro) {
         this.kamiMacro = kamiMacro;

@@ -1,8 +1,6 @@
 
 package invoker;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import javax.swing.JButton;
 
 import command.Command;
@@ -24,12 +22,7 @@ class myButton extends JButton {
 	public myButton(String label, final Command cmd) {
 		super(label);
 		this.label = label;
-		this.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				cmd.execute();
-			}
-		});
+		this.addActionListener(e -> cmd.execute());
 	}
 	/*
 	Momento
@@ -37,12 +30,7 @@ class myButton extends JButton {
 	public myButton(String label, final CommandM cmd) {
 		super(label);
 		this.label = label;
-		this.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				cmd.execute();
-			}
-		});
+		this.addActionListener(e -> cmd.execute());
 	}
 
 
@@ -52,12 +40,7 @@ class myButton extends JButton {
 	public myButton(String label, final CommandMacro cmd) {
 		super(label);
 		this.label = label;
-		this.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				cmd.execute();
-			}
-		});
+		this.addActionListener(e -> cmd.execute());
 	}
 		/*
 	Momento

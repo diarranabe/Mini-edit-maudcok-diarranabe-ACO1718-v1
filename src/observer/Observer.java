@@ -2,7 +2,6 @@
 package observer;
 
 
-import receiver.Buffer;
 import receiver.Selection;
 
 public interface Observer

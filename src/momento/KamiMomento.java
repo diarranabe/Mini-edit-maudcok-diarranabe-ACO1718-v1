@@ -5,7 +5,6 @@ import receiver.Buffer;
 import receiver.Selection;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 
 public class KamiMomento {
 
@@ -22,7 +21,7 @@ public class KamiMomento {
     // recuperation du momento du sujet
     private final Originator originator = new Originator();
 
-    private final ArrayList<Observer> observers = new ArrayList<Observer>();
+    private final ArrayList<Observer> observers = new ArrayList<>();
 
 
 
@@ -77,7 +76,7 @@ public class KamiMomento {
 
     /**
      *  Enregistr un etet momento
-     * @param buffer
+     * @param buffer l'instance de notre objet Buffer
      */
     public void saveMomento(Buffer buffer){
 
@@ -107,7 +106,7 @@ public class KamiMomento {
 
     /**
      * Ajoute un observer
-     * @param observers
+     * @param observers Un observer a ajouter
      */
     public void addObserver(Observer observers) {
         this.observers.add(observers);
@@ -116,8 +115,8 @@ public class KamiMomento {
     /**
      *  Notifie les Observer
      *
-     * @param valeur
-     * @param contenue
+     * @param valeur notre valeur a afficher
+     * @param contenue position ou afficher notre valeur
      */
     private void NotifiedObserver(String valeur, Selection contenue){
 
@@ -125,10 +124,9 @@ public class KamiMomento {
 
         Selection sel = new Selection();
         sel.setStart(0);sel.setLength(0);
-        for (Iterator<Observer> it = observers.iterator(); it.hasNext(); ) {
-            Observer observer = it.next();
-            observer.getNotifield("",sel);
-            observer.getNotifield(valeur,contenue);
+        for (Observer observer : observers) {
+            observer.getNotifield("", sel);
+            observer.getNotifield(valeur, contenue);
 
         }
     }

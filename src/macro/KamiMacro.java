@@ -32,9 +32,9 @@ public class KamiMacro {
     /**
      * enregistrement des comande
      *
-     * @param actionCmd
-     * @param stateValuer
-     * @param select
+     * @param actionCmd  Le rype de commende effectuer par l'utilisateur
+     * @param stateValuer la valeur de cette commende
+     * @param select la selection faite par l'utilisateur
      */
     public void enregistrer(String actionCmd, char stateValuer, Selection select) {
         int timeswap = select.getStart() - TimeZero;
@@ -102,7 +102,7 @@ public class KamiMacro {
                             break;
                     }
                     try {
-                        this.sleep(10);
+                        sleep(500);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }

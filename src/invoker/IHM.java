@@ -6,8 +6,6 @@ import command.CommandM;
 import command.CommandMacro;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.HashMap;
 
 public class IHM {
@@ -45,12 +43,7 @@ public class IHM {
 	private void addButton(String nom, Command cmd) {
 		myButton bouton = new myButton(nom, cmd);
 
-		bouton.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				textArea.requestFocusInWindow();
-			}
-		});
+		bouton.addActionListener(arg0 -> textArea.requestFocusInWindow());
 
 		frame.add(bouton);
 	}
@@ -62,12 +55,7 @@ public class IHM {
 	private void addButton(String nom, CommandM cmd) {
 		myButton bouton = new myButton(nom, cmd);
 
-		bouton.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				textArea.requestFocusInWindow();
-			}
-		});
+		bouton.addActionListener(arg0 -> textArea.requestFocusInWindow());
 
 		frame.add(bouton);
 	}
@@ -76,12 +64,7 @@ public class IHM {
 	private void addButton(String nom, CommandMacro cmd) {
 		myButton bouton = new myButton(nom, cmd);
 
-		bouton.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				textArea.requestFocusInWindow();
-			}
-		});
+		bouton.addActionListener(arg0 -> textArea.requestFocusInWindow());
 
 		frame.add(bouton);
 	}
@@ -110,7 +93,7 @@ public class IHM {
 
 
 	public void addTextArea(int rows, int cols) {
-		HashMap<String, Command> cmds = new HashMap<String, Command>();
+		HashMap<String, Command> cmds = new HashMap<>();
 		cmds.put("selectionner", selectionner);
 		cmds.put("taper", taper);
 		cmds.put("supprimer", supprimer);

@@ -7,7 +7,7 @@ import receiver.Buffer;
 public class Coller extends Command {
 	/**
 	 *
-	 * @param buffer
+	 * @param buffer l'instance de notre objet Buffer
 	 */
 	public Coller(Buffer buffer) {
 		this.buffer = buffer;

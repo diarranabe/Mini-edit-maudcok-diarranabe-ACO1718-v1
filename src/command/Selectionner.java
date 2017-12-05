@@ -6,8 +6,8 @@ import receiver.Buffer;
 public class Selectionner extends Command {
 	/**
 	 *
-	 * @param buffer
-	 * @param ihm
+	 * @param buffer l'instance de notre objet Buffer
+	 * @param ihm l'instance de notre objet ihm
 	 */
 	public Selectionner(Buffer buffer, IHM ihm) {
 		this.buffer = buffer;

@@ -1,9 +1,6 @@
 package command;
 
-import invoker.IHM;
 import momento.KamiMomento;
-import momento.Momento;
-import receiver.Buffer;
 
 public class CommandM {
 
@@ -14,7 +11,7 @@ public class CommandM {
 
 
 
-    public  void execute(){};
+    public  void execute(){}
 
 
 }
