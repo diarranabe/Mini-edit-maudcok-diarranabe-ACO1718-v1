@@ -7,14 +7,19 @@ class CareTaker {
 
     private final ArrayList<Momento> momentos = new ArrayList<>() ;
 
-    /*
-    Ajoute un Momento a la liste Momentos
+
+    /**
+     * Ajoute un Momento a la liste Momentos
+      * @param m nouveau Momento
      */
     public void addMomento(Momento m){
         momentos.add(m);
     }
-    /*
-    Recupere le momento a l'index  i
+
+    /**
+     * Recupere le momento a l'index  i
+     * @param i index  i
+     * @return Momento
      */
     public Momento getMomento(int i){
         return momentos.get(i);
