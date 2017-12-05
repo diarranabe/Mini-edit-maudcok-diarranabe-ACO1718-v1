@@ -2,7 +2,6 @@
 package receiver;
 
 import macro.KamiMacro;
-import momento.KamiMomento;
 import observer.Observer;
 import observer.Subject;
 
@@ -14,7 +13,6 @@ public class Buffer extends Subject { // Il est observé
     private String texte;
     private final Selection selection;
     private final PressePapiers pressePapiers;
-    private static KamiMomento kamiMomento;
     private static KamiMacro kamiMacro;
 
     public Buffer() {
@@ -44,7 +42,7 @@ public class Buffer extends Subject { // Il est observé
             selection.setStart(start + 1);
             selection.setLength(0);
         }
-        kamiMomento.saveMomento(this);
+
         System.out.println("=> "+ kamiMacro.getStatue());
         if (kamiMacro.getStatue() == 2 ){
             kamiMacro.enregistrer("taper" , type, selection );
@@ -83,8 +81,6 @@ public class Buffer extends Subject { // Il est observé
                 kamiMacro.enregistrer("couper" , ' ', selection );
             }
             selection.setLength(0);
-            kamiMomento.saveMomento(this);
-
             notifyMyObservers();
         }
     }
@@ -102,7 +98,6 @@ public class Buffer extends Subject { // Il est observé
             selection.setStart(selStart + clipboard.length());
             selection.setLength(0);
         }
-        kamiMomento.saveMomento(this);
         if (kamiMacro.getStatue() == 2 ){
             kamiMacro.enregistrer("coller" , ' ', selection );
         }
@@ -122,7 +117,6 @@ public class Buffer extends Subject { // Il est observé
         if (kamiMacro.getStatue() == 2 ){
             kamiMacro.enregistrer("supprimer" , ' ', selection );
         }
-        kamiMomento.saveMomento(this);
         notifyMyObservers();
     }
 
@@ -159,7 +153,6 @@ public class Buffer extends Subject { // Il est observé
 
     public void addObserver(Observer o) {
         observers.add(o);
-        kamiMomento.addObserver(o);
     }
 
 
@@ -172,10 +165,7 @@ public class Buffer extends Subject { // Il est observé
         selection.setLength(length);
     }
 
-    public void conectMomento(KamiMomento kamiMomento) {
-        Buffer.kamiMomento = kamiMomento;
 
-    }
     public void conectMomento(KamiMacro kamiMacro) {
         Buffer.kamiMacro = kamiMacro;
 

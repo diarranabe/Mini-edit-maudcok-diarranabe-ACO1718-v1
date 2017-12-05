@@ -2,7 +2,6 @@
 package invoker;
 
 import command.Command;
-import command.CommandM;
 import command.CommandMacro;
 
 import javax.swing.*;
@@ -22,9 +21,6 @@ public class IHM {
 	private Command selectionner;
 	private Command taper;
 	private Command supprimer;
-
-	private CommandM faire;
-	private CommandM defaire;
 
 	private CommandMacro play ;
 	private CommandMacro record ;
@@ -51,17 +47,6 @@ public class IHM {
 		frame.add(bouton);
 	}
 
-	/*
-	Momento ***
-	 */
-
-	private void addButton(String nom, CommandM cmd) {
-		myButton bouton = new myButton(nom, cmd);
-
-		bouton.addActionListener(arg0 -> textArea.requestFocusInWindow());
-
-		frame.add(bouton);
-	}
 
 
 	private void addButton(String nom, CommandMacro cmd) {
@@ -79,11 +64,7 @@ public class IHM {
 		addButton("Couper",  couper);
 		addButton("Copier",  copier);
 		addButton("Coller",  coller);
-	/*
-	Momento ***
-	 */
-		addButton("Faire",   faire);
-		addButton("Defaire", defaire);
+
 			/*
 	Momento ***
 	 */
@@ -127,10 +108,7 @@ public class IHM {
 		this.taper = cmds.get("taper");
 		this.supprimer = cmds.get("supprimer");
 	}
-	public void setCommandMs(HashMap<String, CommandM> cmds){
-		this.faire = cmds.get("faire");
-		this.defaire = cmds.get("defaire");
-	}
+
 
 	public void setCommandMacro(HashMap<String, CommandMacro> cmds){
 		this.play = cmds.get("play");

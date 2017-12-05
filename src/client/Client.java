@@ -2,7 +2,6 @@ package client;
 
 import command.*;
 import macro.KamiMacro;
-import momento.KamiMomento;
 import observer.IhmObserver;
 import receiver.Buffer;
 
@@ -29,7 +28,6 @@ class Client {
 		/*
 		Momento
 		 */
-		KamiMomento kamiMomento = new KamiMomento();
 		KamiMacro kamiMacro = new KamiMacro();
 
 		HashMap<String, Command> commmands = new HashMap<>();
@@ -41,10 +39,6 @@ class Client {
 		commmands.put("supprimer", new Supprimer(buffer));
 		ihm.setCommands(commmands);
 
-		HashMap<String, CommandM> commmandMs = new HashMap<>();
-		commmandMs.put("faire", new faire(kamiMomento));
-		commmandMs.put("defaire", new defaire(kamiMomento));
-		ihm.setCommandMs(commmandMs);
 
 		HashMap<String, CommandMacro> commmandMacro = new HashMap<>();
 		commmandMacro.put("play", new PlayMacro(kamiMacro));
@@ -52,7 +46,7 @@ class Client {
 		commmandMacro.put("stop", new StopRecordMacro(kamiMacro));
 		ihm.setCommandMacro(commmandMacro);
 
-		buffer.conectMomento(kamiMomento);
+
 		buffer.conectMomento(kamiMacro);
 
 		// mise en place de l'observer

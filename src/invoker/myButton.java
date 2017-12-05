@@ -2,7 +2,6 @@
 package invoker;
 
 import command.Command;
-import command.CommandM;
 import command.CommandMacro;
 
 import javax.swing.*;
@@ -24,14 +23,7 @@ class myButton extends JButton {
 		this.label = label;
 		this.addActionListener(e -> cmd.execute());
 	}
-	/*
-	Momento
-	 */
-	public myButton(String label, final CommandM cmd) {
-		super(label);
-		this.label = label;
-		this.addActionListener(e -> cmd.execute());
-	}
+
 
 
 	/*
