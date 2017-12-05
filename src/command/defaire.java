@@ -1,14 +1,12 @@
 package command;
 
 
-import invoker.IHM;
 import momento.KamiMomento;
-import receiver.Buffer;
 
 public class defaire extends CommandM {
     /**
      *
-     * @param kamiMomento
+     * @param kamiMomento l'instance de notre objet Momento
      */
     public defaire(KamiMomento kamiMomento) {
         this.kamiMomento = kamiMomento;

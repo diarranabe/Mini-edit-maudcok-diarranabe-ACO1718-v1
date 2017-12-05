@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 class CareTaker {
 
-    private final ArrayList<Momento> momentos = new ArrayList<Momento>() ;
+    private final ArrayList<Momento> momentos = new ArrayList<>() ;
 
     /*
     Ajoute un Momento a la liste Momentos

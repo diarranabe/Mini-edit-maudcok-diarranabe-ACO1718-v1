@@ -6,23 +6,19 @@ import java.awt.event.KeyListener;
 import java.util.HashMap;
 
 import javax.swing.JTextArea;
-import javax.swing.event.CaretEvent;
-import javax.swing.event.CaretListener;
 
 import command.Command;
 
 
 public class TextArea extends JTextArea {
 
-	private String content;
 	private char lastChar;
 	private int selectStart;
 	private int selectLength;
 
 
 	private void setContent(String text) {
-		this.content = text;
-		this.setText(content);
+		this.setText(text);
 	}
 
 	public char getLastChar() {
@@ -55,20 +51,16 @@ public class TextArea extends JTextArea {
 		Command taper = cmds.get("taper");
 		Command supprimer = cmds.get("supprimer");
 
-		addCaretListener(new CaretListener() {
-			@Override
-			public void caretUpdate(CaretEvent e) {
-				int start = Math.min(e.getDot(), e.getMark());
-				int end = Math.max(e.getDot(), e.getMark());
-				int length = end - start;
+		addCaretListener(e -> {
+            int start = Math.min(e.getDot(), e.getMark());
+            int end = Math.max(e.getDot(), e.getMark());
+            int length = end - start;
 
-				if (start != getSelectStart() || length != getSelectLength()) {
-					setSelect(start, length);
-					selectionner.execute();
-				}
-			}
-
-		});
+            if (start != getSelectStart() || length != getSelectLength()) {
+                setSelect(start, length);
+                selectionner.execute();
+            }
+        });
 
 		addKeyListener(new KeyListener() {
 			@Override

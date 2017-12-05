@@ -1,8 +1,6 @@
 package command;
 
-import invoker.IHM;
 import macro.KamiMacro;
-import macro.MomentoMacro;
 import receiver.Buffer;
 
 public class CommandMacro {
@@ -14,6 +12,6 @@ public class CommandMacro {
 
 
 
-    public  void execute(){};
+    public  void execute(){}
 
 }

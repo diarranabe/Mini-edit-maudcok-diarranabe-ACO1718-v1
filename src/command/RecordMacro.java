@@ -6,8 +6,8 @@ import receiver.Buffer;
 public class RecordMacro extends CommandMacro {
     /**
      *
-     * @param kamiMacro
-     * @param buffer
+     * @param kamiMacro l'instance de notre objet Macro
+     * @param buffer l'instance de notre objet Buffer
      */
     public RecordMacro(KamiMacro kamiMacro, Buffer buffer) {
         this.buffer = buffer;

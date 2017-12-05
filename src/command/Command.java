@@ -13,7 +13,7 @@ public class Command
 	Buffer buffer;
 	IHM ihm;
 	
-	public  void execute(){};
-	
-	
+	public  void execute(){}
+
+
 }

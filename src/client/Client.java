@@ -13,26 +13,18 @@ class Client {
 	private static final int ZONE_TEXTE_ROWS = 40;
 	private static final int ZONE_TEXTE_COLS = 70;
 
-	private static Buffer buffer;
-	private static KamiMomento kamiMomento;
-	private static KamiMacro kamiMacro;
-	private static IhmObserver ihm;
-	private static HashMap<String, Command> commmands;
-	private static HashMap<String, CommandM> commmandMs;
-	private static HashMap<String, CommandMacro> commmandMacro;
-
 	public static void main(String[] args) throws Exception {
 
-		buffer = new Buffer();
-		ihm = new IhmObserver(buffer);
+		Buffer buffer = new Buffer();
+		IhmObserver ihm = new IhmObserver(buffer);
 
 		/*
 		Momento
 		 */
-		kamiMomento = new KamiMomento() ;
-		kamiMacro = new KamiMacro() ;
+		KamiMomento kamiMomento = new KamiMomento();
+		KamiMacro kamiMacro = new KamiMacro();
 
-		commmands = new HashMap<String, Command>();
+		HashMap<String, Command> commmands = new HashMap<>();
 		commmands.put("couper", new Couper(buffer));
 		commmands.put("copier", new Copier(buffer));
 		commmands.put("coller", new Coller(buffer));
@@ -41,14 +33,14 @@ class Client {
 		commmands.put("supprimer", new Supprimer(buffer));
 		ihm.setCommands(commmands);
 
-		commmandMs = new HashMap<String, CommandM>();
+		HashMap<String, CommandM> commmandMs = new HashMap<>();
 		commmandMs.put("faire", new faire(kamiMomento));
 		commmandMs.put("defaire", new defaire(kamiMomento));
 		ihm.setCommandMs(commmandMs);
 
-		commmandMacro = new HashMap<String, CommandMacro>();
+		HashMap<String, CommandMacro> commmandMacro = new HashMap<>();
 		commmandMacro.put("play", new PlayMacro(kamiMacro));
-		commmandMacro.put("record", new RecordMacro(kamiMacro,buffer));
+		commmandMacro.put("record", new RecordMacro(kamiMacro, buffer));
 		commmandMacro.put("stop", new StopRecordMacro(kamiMacro));
 		ihm.setCommandMacro(commmandMacro);
 

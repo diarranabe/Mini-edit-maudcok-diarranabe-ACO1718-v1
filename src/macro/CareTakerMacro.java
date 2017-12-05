@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 class CareTakerMacro {
 
-    private final ArrayList<MomentoMacro> momentos = new ArrayList<MomentoMacro>() ;
+    private final ArrayList<MomentoMacro> momentos = new ArrayList<>() ;
 
     /*
     Ajoute un MomentoMacro a la liste MomentoMacros

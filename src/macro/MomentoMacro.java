@@ -1,7 +1,5 @@
 package macro;
 
-import receiver.Selection;
-
 public class MomentoMacro {
 
     private final String actionCmd;
