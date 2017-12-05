@@ -1,13 +1,12 @@
 
 package invoker;
 
+import command.Command;
+
+import javax.swing.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.HashMap;
-
-import javax.swing.JTextArea;
-
-import command.Command;
 
 
 public class TextArea extends JTextArea {

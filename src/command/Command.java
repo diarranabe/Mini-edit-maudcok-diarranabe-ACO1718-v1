@@ -1,8 +1,8 @@
 
 package command;
 
-import receiver.Buffer;
 import invoker.IHM;
+import receiver.Buffer;
 
 /**
  *  Command V1

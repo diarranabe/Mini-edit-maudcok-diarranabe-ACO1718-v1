@@ -38,13 +38,13 @@ public class KamiMacro {
      */
     public void enregistrer(String actionCmd, char stateValuer, Selection select) {
         int timeswap = select.getStart() - TimeZero;
-        System.out.println("Lenght -> "+ select.getLength()+" curs pos = " + select.getStart() +" zeropos = "+ TimeZero +" Swap = " +timeswap+ " Cmd = " +actionCmd );
+   //     System.out.println("Lenght -> "+ select.getLength()+" curs pos = " + select.getStart() +" zeropos = "+ TimeZero +" Swap = " +timeswap+ " Cmd = " +actionCmd );
       //  TimeZero = buffer.getSelectStart();
         TimeZero = select.getStart();
 
         originator.setAction(actionCmd, stateValuer, timeswap, select.getLength());
         // Add new article to the ArrayList
-        System.out.println("add cnd => " + actionCmd);
+    //    System.out.println("add cnd => " + actionCmd);
         caretaker.addMomentoMacro(originator.storeMomento());
         siezemacro++;
 
@@ -57,7 +57,7 @@ public class KamiMacro {
         if (buffer!= null){
         statue = 1;
         ss = buffer.getSelectStart();
-        System.out.println("ss = "+ss);
+      //  System.out.println("ss = "+ss);
         Thread thread = new Thread() {
             @Override
             public void run() {
@@ -79,7 +79,7 @@ public class KamiMacro {
                             buffer.copier();
                             break;
                         case "couper":
-                            System.out.println("lenght  -> " + lenght);
+                          //  System.out.println("lenght  -> " + lenght);
                             buffer.setSelection(ss + timeswap, lenght);
                             ss+=timeswap ;
                             buffer.couper();
@@ -102,15 +102,18 @@ public class KamiMacro {
                             break;
                     }
                     try {
-                        sleep(500);
+                        this.sleep(10);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
                 }
+                statue = 0;
+
 
             }
         };
         thread.run();}
+
     }
 
     /**

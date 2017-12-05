@@ -1,11 +1,11 @@
 
 package invoker;
 
-import javax.swing.JButton;
-
 import command.Command;
 import command.CommandM;
 import command.CommandMacro;
+
+import javax.swing.*;
 
 class myButton extends JButton {
 	private String label;

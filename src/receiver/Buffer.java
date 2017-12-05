@@ -1,12 +1,12 @@
 
 package receiver;
 
-import java.util.ArrayList;
-
 import macro.KamiMacro;
 import momento.KamiMomento;
 import observer.Observer;
 import observer.Subject;
+
+import java.util.ArrayList;
 
 
 public class Buffer extends Subject { // Il est observé

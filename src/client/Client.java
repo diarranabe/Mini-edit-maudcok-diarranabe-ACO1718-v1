@@ -1,12 +1,12 @@
 package client;
 
-import java.util.HashMap;
-
+import command.*;
 import macro.KamiMacro;
 import momento.KamiMomento;
 import observer.IhmObserver;
 import receiver.Buffer;
-import command.*;
+
+import java.util.HashMap;
 
 /**
  *  Classe principale du projet
