@@ -68,9 +68,9 @@ public class KamiMacro {
                     int lenght = originator.restoreMacroLenghtn(momentoMacro);
                     int timeswap = originator.restoreMacroSart(momentoMacro);
                    // if (timeswap<0)timeswap-- ;
-int auxx = ss + timeswap ;
+
                     char stape = originator.restoreMacroStateValue(momentoMacro);
- System.out.println(" zeropos = "+ ss +" Swap = " +timeswap+" go-to "+ auxx+ " Cmd = " +originator.restoreMacroAction(momentoMacro) + " Value = -" + stape+"-");
+ //System.out.println(" zeropos = "+ ss +" Swap = " +timeswap+" go-to "+ auxx+ " Cmd = " +originator.restoreMacroAction(momentoMacro) + " Value = -" + stape+"-");
                     switch (originator.restoreMacroAction(momentoMacro)) {
                         case "copier":
 
@@ -85,7 +85,8 @@ int auxx = ss + timeswap ;
                             buffer.couper();
                             break;
                         case "coller":
-                            buffer.setSelection(ss + timeswap, lenght);
+
+                            buffer.setSelection(ss , lenght);
                             ss+=lenght + timeswap ;
                             buffer.coller();
                             break;
