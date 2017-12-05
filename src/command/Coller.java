@@ -4,6 +4,9 @@ package command;
 
 import receiver.Buffer;
 
+/**
+ *  Concrete command Coller
+ */
 public class Coller extends Command {
 	/**
 	 *

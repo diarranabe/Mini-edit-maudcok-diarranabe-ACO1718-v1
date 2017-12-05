@@ -2,7 +2,9 @@
 package command;
 
 import receiver.Buffer;
-
+/**
+ *  Concrete command Copier
+ */
 public class Copier extends Command {
 	/**
 	 *

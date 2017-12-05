@@ -3,6 +3,9 @@ package command;
 
 import momento.KamiMomento;
 
+/**
+ *  Concrete command coller
+ */
 public class defaire extends CommandM {
     /**
      *

@@ -8,6 +8,9 @@ import command.CommandMacro;
 import javax.swing.*;
 import java.util.HashMap;
 
+/**
+ * Configuratuion de l'interface
+ */
 public class IHM {
 
 	private final JFrame frame;

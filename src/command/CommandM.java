@@ -1,7 +1,9 @@
 package command;
 
 import momento.KamiMomento;
-
+/**
+ *  Command Momento V3
+ */
 public class CommandM {
 
     KamiMomento kamiMomento;

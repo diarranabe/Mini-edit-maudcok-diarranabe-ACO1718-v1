@@ -3,6 +3,9 @@ package command;
 import macro.KamiMacro;
 import receiver.Buffer;
 
+/**
+ * Command Macro V2
+ */
 public class CommandMacro {
 
     KamiMacro kamiMacro;

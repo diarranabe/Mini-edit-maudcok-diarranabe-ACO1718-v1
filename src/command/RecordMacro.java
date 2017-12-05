@@ -3,6 +3,9 @@ package command;
 import macro.KamiMacro;
 import receiver.Buffer;
 
+/**
+ *  Concrete command RecordMacro pour connencer l'enregistrment de la nacro
+ */
 public class RecordMacro extends CommandMacro {
     /**
      *

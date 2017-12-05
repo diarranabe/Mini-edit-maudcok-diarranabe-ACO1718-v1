@@ -8,10 +8,14 @@ class OriginatorMacro {
     private int slenght;
 
 
-    /*
-            * Initialisation du momentoMacro
-            *
-            * */
+
+    /**
+     *
+     * @param actionCmd  type d'action effectue par l'utilisateur
+     * @param stateValuer le contenu ou la valeur de l'action
+     * @param start la position du curseur
+     * @param slenght prochqinne position de l'utilisateur
+     */
     public void setAction(String actionCmd, char stateValuer, int start, int slenght) {
         this.stateValuer = stateValuer;
         this.start =start;
