@@ -3,7 +3,9 @@ package command;
 
 import receiver.Buffer;
 
-
+/**
+ *  Concrete command Couper
+ */
 public class Couper extends Command {
 
 	public Couper(Buffer buffer) {

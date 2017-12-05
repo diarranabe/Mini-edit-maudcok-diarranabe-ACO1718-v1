@@ -1,7 +1,9 @@
 package command;
 
 import macro.KamiMacro;
-
+/**
+ *  Concrete command PlayMacro pour jouer l'enregistrment de la nacro
+ */
 public class PlayMacro extends CommandMacro {
     /**
      *

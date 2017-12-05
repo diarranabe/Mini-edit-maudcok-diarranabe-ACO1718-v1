@@ -2,6 +2,9 @@ package command;
 
 import momento.KamiMomento;
 
+/**
+ *  Concrete command faire
+ */
 public class faire extends CommandM {
     /**
      *

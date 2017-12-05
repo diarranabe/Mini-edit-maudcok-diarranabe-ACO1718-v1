@@ -1,4 +1,3 @@
-
 package client;
 
 import java.util.HashMap;
@@ -9,10 +8,19 @@ import observer.IhmObserver;
 import receiver.Buffer;
 import command.*;
 
+/**
+ *  Classe principale du projet
+ *
+ */
 class Client {
 	private static final int ZONE_TEXTE_ROWS = 40;
 	private static final int ZONE_TEXTE_COLS = 70;
 
+	/**
+	 *  Main class
+	 * @param args  string
+	 * @throws Exception IHM exception
+	 */
 	public static void main(String[] args) throws Exception {
 
 		Buffer buffer = new Buffer();

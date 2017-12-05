@@ -3,6 +3,9 @@ package command;
 import invoker.IHM;
 import receiver.Buffer;
 
+/**
+ * Command Selectionner
+ */
 public class Selectionner extends Command {
 	/**
 	 *
